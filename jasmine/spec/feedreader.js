@@ -100,10 +100,20 @@ $(function() {
           const feed = document.querySelector('.feed');
           expect(feed.children.length > 0).toBe(true);
         });
-
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New feed Selection', function() {
+      const feed = document.querySelector('.feed');
+      const firstFeed = [];
+
+      beforeEach(function(done) {
+        loadFeed(0);
+        Array.from(feed.children).forEach(function(entry) {
+          firstFeed.push(entry.innerText);
+        });
+        loadFeed(1, done);
+      });
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
